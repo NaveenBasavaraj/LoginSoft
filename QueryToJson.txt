@@ -26,6 +26,37 @@ def querytojson(data):
 	data = data.replace('=',':')
 	data = data.replace('&&','and')
 	data = data.replace('||','or')
+	ands = re.compile(r'(and)')
+	ors = re.compile(r'(or)')
+	xx = x.findall(s)
+	andss = ands.findall(s)
+	orss = ors.findall(s)
+	if len(andss) == 2:
+    		inner = "or"
+    		outer = "and"
+	else:
+    		inner = "and"
+    		outer = "or"
+	formatt = {
+ 	"query": {
+ 	outer: [
+ 	{
+ 	inner: {
+ 	"A": 2,
+ 	"B": 3
+ 	}
+ 	},
+ 	{
+ 	inner: {
+ 	"C": 4,
+ 	"D": 5
+ 	}
+ 	}
+ 	]
+ 	}
+	}
+
+	res = json.dumps(formatt)
         res = json.dumps(data)
         print(res)
     else:
