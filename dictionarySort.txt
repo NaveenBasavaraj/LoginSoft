@@ -1,0 +1,17 @@
+def sortDict(data):
+    sorted_items = sorted(data.items(), key = lambda item : len(item[1]))
+    sorted_items2= sorted(sorted_items, key = lambda item : item[0])
+    return sorted_items2
+  
+input:
+data = {'hello': ['doc1'], 'my': ['doc1'], 'name': ['doc1'], 'is': ['doc1', 'doc2'], 'james': ['doc1', 'doc2'],
+'a': ['doc2'], 'developer': ['doc2']}
+
+output:
+[('a', ['doc2']),
+ ('developer', ['doc2']),
+ ('hello', ['doc1']),
+ ('is', ['doc1', 'doc2']),
+ ('james', ['doc1', 'doc2']),
+ ('my', ['doc1']),
+ ('name', ['doc1'])]

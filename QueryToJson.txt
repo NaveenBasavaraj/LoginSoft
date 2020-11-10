@@ -1,0 +1,28 @@
+import json
+def validity(data): 
+    stack = [] 
+    for i in data: 
+        if i in open_bracket: 
+            stack.append(i) 
+        elif i in close_bracket: 
+            pos = close_bracket.index(i) 
+            if ((len(stack) > 0) and
+                (open_bracket[pos] == stack[len(stack)-1])): 
+                stack.pop() 
+            else: 
+                return False
+    if len(stack) == 0: 
+        return True
+    else: 
+        return False
+
+def querytojson(data):
+    open_bracket = ["[","{","("] 
+    close_bracket = ["]","}",")"] 
+    y = validity(data)
+    if y is True:
+        res = json.dumps(data)
+        print(res)
+    else:
+        print("Invalid string")
+        return False
