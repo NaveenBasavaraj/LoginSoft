@@ -33,6 +33,9 @@ def querytojson(data):
         ors = re.compile(r'(or)')
         andss = ands.findall(data)
         orss = ors.findall(data)
+        nums = re.compile(r'\d')
+        numss = nums.findall(data)
+        a,b,c,d = numss[0],numss[1],numss[2],numss[3]
         if len(andss) == 2:
             inner = "and"
             outer = "or"
@@ -44,8 +47,8 @@ def querytojson(data):
         outer: [
         {
         inner: {
-        "A": 2,
-        "B": 3
+        "A": a,
+        "B": b
         }
         },
         {
