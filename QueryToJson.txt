@@ -21,6 +21,11 @@ def querytojson(data):
     close_bracket = ["]","}",")"] 
     y = validity(data)
     if y is True:
+	data = data.replace('(','{')
+	data = data.replace(')','}')
+	data = data.replace('=',':')
+	data = data.replace('&&','and')
+	data = data.replace('||','or')
         res = json.dumps(data)
         print(res)
     else:
